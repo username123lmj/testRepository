@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work In Progress</title>
+    <script>
+        function httpGet(theUrl,inputData)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "POST", theUrl, false ); // false for synchronous request
+        xmlHttp.send( `{
+  "data": "${inputData}"
+}` );
+        return xmlHttp.responseText;
+    }
+
+    document.getElementById("bt1").addEventListener("click",function(){
+        thisInput = document.getElementById("in1").value;
+        console.log(thisInput);
+        console.log(thisInput.value);
+        httpGet("https://hooks.slack.com/triggers/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",thisInput);  
+    });
+
+    </script>
+</head>
+<body>
+
+    <input id="in1"></input>
+    <button type="button" id="bt1">Click here</button>
+    
+</body>
+</html>
